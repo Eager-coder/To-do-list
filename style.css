@@ -94,10 +94,10 @@ img{
     position: relative;
 }
 input[type=checkbox]{
-    width: 15px;
-    margin: 0 20px;
+    width: 25px;
+    margin: 0 15px;
     color: black;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .line-through{
     text-decoration: line-through 1.5px white;
