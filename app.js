@@ -76,8 +76,11 @@ function deleteTask(trash){
 }
 
 function crossOut(checkbox){
-    if (checkbox.target.tagName === 'INPUT'){
-        checkbox.target.nextElementSibling.classList.toggle('line-through')
+    if (checkbox.target.checked === true){
+        checkbox.target.nextElementSibling.classList.add('line-through')
+    }
+    if(checkbox.target.checked === false){
+        checkbox.target.nextElementSibling.classList.remove('line-through')
     }
 }
 
