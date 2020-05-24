@@ -20,6 +20,7 @@ function retrieve(){
             box.classList.add('list-box');
             let check = document.createElement('input');
             check.setAttribute('type', 'checkbox');
+            check.id = 'check';
             let li = document.createElement('input');
             li.value = element;
             li.id = 'todo';
@@ -42,6 +43,7 @@ function addTask(){
         box.classList.add('list-box');
         let check = document.createElement('input');
         check.setAttribute('type', 'checkbox');
+        check.id = 'check';
         let li = document.createElement('input');
         li.id = 'todo';
         li.value = input.value;
@@ -76,12 +78,14 @@ function deleteTask(trash){
 }
 
 function crossOut(checkbox){
-    if (checkbox.target.checked === true){
-        checkbox.target.nextElementSibling.classList.add('line-through')
-    }
-    if(checkbox.target.checked === false){
-        checkbox.target.nextElementSibling.classList.remove('line-through')
-    }
+    // if (checkbox.target.checked === true){
+    //     checkbox.target.nextElementSibling.classList.add('line-through')
+    // }
+    // if(checkbox.target.checked === false){
+    //     checkbox.target.nextElementSibling.classList.remove('line-through')
+    // }
+    if(checkbox.target.id === 'check')
+    checkbox.target.nextElementSibling.classList.toggle('line-through')
 }
 
 document.addEventListener('click', ()=>{
