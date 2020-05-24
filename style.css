@@ -79,8 +79,8 @@ img{
     position: absolute;
     right: 0px;
     width: 40px;
-    border-left: white solid 2px;
     height: 40px;
+    border-left: white solid 2px;
     display: flex;
     justify-content: center;
     align-items: center;
