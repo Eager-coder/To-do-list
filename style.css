@@ -65,7 +65,6 @@ li{
     font-size: 1.2rem;
     font-weight: 600;
     margin: 10px 0;
-    margin-right: 200px;
     width: max-content;
     color: white;
 
@@ -87,7 +86,8 @@ img{
     z-index: 1;
 }
 .list-box{
-    width: 440px;
+    max-width: 440px;
+    width: 100%;
     margin: 10px 0;
     border: white 2px solid;
     display: flex;
@@ -102,4 +102,20 @@ input[type=checkbox]{
 }
 .line-through{
     text-decoration: line-through 1.5px white;
+}
+@media screen and (max-width: 500px){
+    h1{
+        font-size: 2.5rem;
+        
+    }
+    .app-container{
+        width: 100vw;
+        padding: 5px ;
+    }
+    input[type=text]{
+        width: 80vw;
+    }
+    li{
+        margin: 0;
+    }
 }
