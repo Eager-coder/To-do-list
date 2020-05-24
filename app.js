@@ -18,9 +18,8 @@ function retrieve(){
         taskList.forEach(element => {
             let box = document.createElement('div');
             box.classList.add('list-box');
-            let check = document.createElement('img');
-            check.src ="https://img.icons8.com/offices/100/000000/unchecked-checkbox.png"
-            //check.setAttribute('type', 'checkbox');
+            let check = document.createElement('input');
+            check.setAttribute('type', 'checkbox');
             check.id = 'check';
             let li = document.createElement('input');
             li.value = element;
@@ -43,9 +42,9 @@ function addTask(){
     if (input.value !== ''){  
         let box = document.createElement('div');
         box.classList.add('list-box');
-        let check = document.createElement('img');
-        check.src ="https://img.icons8.com/offices/100/000000/unchecked-checkbox.png"
-        //check.setAttribute('type', 'checkbox');
+        let check = document.createElement('input');
+
+        check.setAttribute('type', 'checkbox');
         check.id = 'check';
         let li = document.createElement('input');
         li.id = 'todo';
@@ -82,12 +81,6 @@ function deleteTask(trash){
 }
 
 function crossOut(checkbox){
-    // if (checkbox.target.checked === true){
-    //     checkbox.target.nextElementSibling.classList.add('line-through')
-    // }
-    // if(checkbox.target.checked === false){
-    //     checkbox.target.nextElementSibling.classList.remove('line-through')
-    // }
     if(checkbox.target.id === 'check')
     checkbox.target.nextElementSibling.classList.toggle('line-through')
 }
