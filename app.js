@@ -18,14 +18,16 @@ function retrieve(){
         taskList.forEach(element => {
             let box = document.createElement('div');
             box.classList.add('list-box');
-            let check = document.createElement('input');
-            check.setAttribute('type', 'checkbox');
+            let check = document.createElement('img');
+            check.src ="https://img.icons8.com/offices/100/000000/unchecked-checkbox.png"
+            //check.setAttribute('type', 'checkbox');
             check.id = 'check';
             let li = document.createElement('input');
             li.value = element;
             li.id = 'todo';
             let img = document.createElement('img');
             img.classList.add('image');
+            img.id = 'remove';
             img.dataset.id = element;
             box.appendChild(check);
             box.appendChild(li);
@@ -41,13 +43,15 @@ function addTask(){
     if (input.value !== ''){  
         let box = document.createElement('div');
         box.classList.add('list-box');
-        let check = document.createElement('input');
-        check.setAttribute('type', 'checkbox');
+        let check = document.createElement('img');
+        check.src ="https://img.icons8.com/offices/100/000000/unchecked-checkbox.png"
+        //check.setAttribute('type', 'checkbox');
         check.id = 'check';
         let li = document.createElement('input');
         li.id = 'todo';
         li.value = input.value;
         let img = document.createElement('img');
+        img.id = 'remove';
         img.dataset.id = input.value;
         img.classList.add('image');
         box.appendChild(check);
@@ -69,7 +73,7 @@ function addTask(){
 }
 
 function deleteTask(trash){
-    if (trash.target.tagName === 'IMG'){
+    if (trash.target.id === 'remove'){
         let taskList = JSON.parse(localStorage.getItem('tasks'));
         taskList = taskList.filter( e =>  e != trash.target.dataset.id );
         localStorage.setItem('tasks', JSON.stringify(taskList))
