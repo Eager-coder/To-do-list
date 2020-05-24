@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    outline: none;
 }
 body{
     background: #f49780c2;
@@ -50,6 +51,7 @@ button{
     font-weight: 900;
     font-size: 1.5rem;
     transition: 0.2s;
+    
 }
 button:hover{
     background-color: rgb(255, 218, 224);
@@ -60,15 +62,7 @@ button:hover{
     justify-content: center;
     flex-direction: column-reverse;
 }
-li{
-    list-style: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 10px 0;
-    width: max-content;
-    color: white;
 
-}
 img{
     width: 30px;
     height: 30px;
@@ -94,6 +88,16 @@ img{
     align-items: center;
     position: relative;
 }
+.list-box>input{
+    list-style: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 10px 0;
+    width: max-content;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
 input[type=checkbox]{
     width: 25px;
     margin: 0 15px;
@@ -109,13 +113,18 @@ input[type=checkbox]{
         
     }
     .app-container{
-        width: 100vw;
-        padding: 5px ;
+        width: 100%;
+        padding: 20px 5px ;
+        margin: 0 auto;
+    }
+    .list-container{
+        width: 90%;
+        margin: 0 auto;
     }
     input[type=text]{
         width: 80vw;
     }
-    li{
-        margin: 0;
+    #todo{
+        width: 80%;
     }
 }

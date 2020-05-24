@@ -13,23 +13,27 @@ listContainer.addEventListener('click', crossOut);
 window.onload = retrieve();
 
 function retrieve(){
-    let taskList = JSON.parse(localStorage.getItem('tasks'));
-    taskList.forEach(element => {
-        let box = document.createElement('div');
-        box.classList.add('list-box');
-        let check = document.createElement('input');
-        check.setAttribute('type', 'checkbox');
-        let li = document.createElement('li');
-        li.textContent = element;
-        let img = document.createElement('img');
-        img.classList.add('image');
-        img.dataset.id = element;
-        box.appendChild(check);
-        box.appendChild(li);
-        listContainer.appendChild(box);
-        img.src ="https://img.icons8.com/plasticine/100/000000/filled-trash.png";
-        box.appendChild(img);  
-    })
+    if (localStorage.length){
+        let taskList = JSON.parse(localStorage.getItem('tasks'));
+        taskList.forEach(element => {
+            let box = document.createElement('div');
+            box.classList.add('list-box');
+            let check = document.createElement('input');
+            check.setAttribute('type', 'checkbox');
+            let li = document.createElement('input');
+            li.value = element;
+            li.id = 'todo';
+            let img = document.createElement('img');
+            img.classList.add('image');
+            img.dataset.id = element;
+            box.appendChild(check);
+            box.appendChild(li);
+            listContainer.appendChild(box);
+            img.src ="https://img.icons8.com/plasticine/100/000000/filled-trash.png";
+            box.appendChild(img);  
+        })
+    }
+    input.value = ''
 }  
 
 function addTask(){
@@ -38,8 +42,9 @@ function addTask(){
         box.classList.add('list-box');
         let check = document.createElement('input');
         check.setAttribute('type', 'checkbox');
-        let li = document.createElement('li');
-        li.textContent = input.value;
+        let li = document.createElement('input');
+        li.id = 'todo';
+        li.value = input.value;
         let img = document.createElement('img');
         img.dataset.id = input.value;
         img.classList.add('image');
@@ -63,11 +68,8 @@ function addTask(){
 
 function deleteTask(trash){
     if (trash.target.tagName === 'IMG'){
-        
         let taskList = JSON.parse(localStorage.getItem('tasks'));
-
         taskList = taskList.filter( e =>  e != trash.target.dataset.id );
-        console.log(trash.target.dataset.id)
         localStorage.setItem('tasks', JSON.stringify(taskList))
         trash.target.parentElement.remove();
     }
@@ -77,5 +79,15 @@ function crossOut(checkbox){
     if (checkbox.target.tagName === 'INPUT'){
         checkbox.target.nextElementSibling.classList.toggle('line-through')
     }
-    
 }
+
+document.addEventListener('click', ()=>{
+    [...listContainer.querySelectorAll('#todo')].forEach( (element, index) => {
+        element.addEventListener('input', () =>{
+            let taskList = JSON.parse(localStorage.getItem('tasks'));
+            taskList[index] = element.value;
+            element.nextElementSibling.dataset.id = element.value;
+            localStorage.setItem('tasks', JSON.stringify(taskList))
+        })
+    })
+})
