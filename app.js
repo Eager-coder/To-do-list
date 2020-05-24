@@ -56,10 +56,7 @@ function setToStarage(){
 
 //functions
 function addTask(){
-    if (input.value != ''){  
-        let taskList = JSON.parse(localStorage.getItem('tasks'));
-        taskList.push(input.value);
-        localStorage.setItem('tasks', JSON.stringify(taskList))
+    if (input.value !== ''){  
         let box = document.createElement('div');
         box.classList.add('list-box');
         let check = document.createElement('input');
@@ -74,6 +71,9 @@ function addTask(){
         listContainer.appendChild(box);
         img.src= "https://img.icons8.com/plasticine/100/000000/filled-trash.png";
         box.appendChild(img);  
+        let taskList = JSON.parse(localStorage.getItem('tasks'));
+        taskList.push(input.value);
+        localStorage.setItem('tasks', JSON.stringify(taskList))
     }
     input.value = '';
 }
