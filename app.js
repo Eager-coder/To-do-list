@@ -12,28 +12,29 @@ input.addEventListener('keypress', function(e){
 addBtn.addEventListener('click', addTask);
 listContainer.addEventListener('click', deleteTask);
 listContainer.addEventListener('click', crossOut);
-window.onload = setToStarage();
+window.onload = retrieve();
 
 // Setting to localStorage
-function setToStarage(){
-    if (localStorage.hasOwnProperty('tasks')){
-        if (input.value != ''){
-            let taskList = JSON.parse(localStorage.getItem('tasks'));
-            taskList.push(input.value);
-            localStorage.setItem('tasks', JSON.stringify(taskList));
-        }
+
+    // if (localStorage.hasOwnProperty('tasks')){
+    //     if (input.value != ''){
+    //         let taskList = JSON.parse(localStorage.getItem('tasks'));
+    //         taskList.push(input.value);
+    //         localStorage.setItem('tasks', JSON.stringify(taskList));
+    //     }
         
-    }
-    else{
-        if (input.value != ''){
-            let taskList = [input.value];
-            localStorage.setItem('tasks', JSON.stringify(taskList));
-        }
-        else{
+    // }
+    // else{
+    //     if (input.value != ''){
+    //         let taskList = [input.value];
+    //         localStorage.setItem('tasks', JSON.stringify(taskList));
+    //     }
+    //     else{
             
-        }
+    //     }
         
-    }
+    // }
+  function retrieve(){
     let taskList = JSON.parse(localStorage.getItem('tasks'));
     taskList.forEach(element => {
         let box = document.createElement('div');
@@ -50,9 +51,11 @@ function setToStarage(){
         listContainer.appendChild(box);
         img.src ="https://img.icons8.com/plasticine/100/000000/filled-trash.png";
         box.appendChild(img);  
+    })
+  }  
     
-    });
-}
+   
+
 
 //functions
 function addTask(){
@@ -71,9 +74,15 @@ function addTask(){
         listContainer.appendChild(box);
         img.src= "https://img.icons8.com/plasticine/100/000000/filled-trash.png";
         box.appendChild(img);  
-        let taskList = JSON.parse(localStorage.getItem('tasks'));
-        taskList.push(input.value);
-        localStorage.setItem('tasks', JSON.stringify(taskList))
+        if (localStorage.hasOwnProperty('tasks')){
+            let taskList = JSON.parse(localStorage.getItem('tasks'));
+            taskList.push(input.value);
+            localStorage.setItem('tasks', JSON.stringify(taskList));  
+        }
+        else{
+            let taskList = [input.value];
+            localStorage.setItem('tasks', JSON.stringify(taskList));
+        }
     }
     input.value = '';
 }
