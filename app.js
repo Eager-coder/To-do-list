@@ -40,53 +40,55 @@ taskList.forEach(element => {
     check.setAttribute('type', 'checkbox');
     let li = document.createElement('li');
     li.textContent = element;
-    let img = document.createElement('div');
-    img.classList.add('image-cont');
+    let img = document.createElement('img');
+    img.classList.add('image');
+    img.dataset.id = element;
     box.appendChild(check);
     box.appendChild(li);
     listContainer.appendChild(box);
-    img.innerHTML = '<img src="https://img.icons8.com/plasticine/100/000000/filled-trash.png"/>';
+    img.src ="https://img.icons8.com/plasticine/100/000000/filled-trash.png";
     box.appendChild(img);  
-    console.log(element)
+
 });
 //functions
 function addTask(){
-    if (input.value != ''){
-        
+    if (input.value != ''){  
         let taskList = JSON.parse(localStorage.getItem('tasks'));
         taskList.push(input.value);
         localStorage.setItem('tasks', JSON.stringify(taskList))
-        
         let box = document.createElement('div');
         box.classList.add('list-box');
         let check = document.createElement('input');
         check.setAttribute('type', 'checkbox');
         let li = document.createElement('li');
         li.textContent = input.value;
-        let img = document.createElement('div');
+        let img = document.createElement('img');
         img.dataset.id = input.value;
-
-        img.classList.add('image-cont');
+        img.classList.add('image');
         box.appendChild(check);
         box.appendChild(li);
         listContainer.appendChild(box);
-        img.innerHTML = '<img src="https://img.icons8.com/plasticine/100/000000/filled-trash.png"/>';
+        img.src= "https://img.icons8.com/plasticine/100/000000/filled-trash.png";
         box.appendChild(img);  
     }
     input.value = '';
 }
 
 function deleteTask(trash){
-    if (trash.target.parentElement.classList.contains("image-cont")){
-        trash.target.parentElement.parentElement.remove();
+    if (trash.target.tagName === 'IMG'){
+        
         let taskList = JSON.parse(localStorage.getItem('tasks'));
-        taskList = taskList.filter((e)=>{ e != trash.target.parentElement.dataset.id });
+
+        taskList = taskList.filter( e =>  e != trash.target.dataset.id );
+        console.log(trash.target.dataset.id)
         localStorage.setItem('tasks', JSON.stringify(taskList))
+        trash.target.parentElement.remove();
     }
 }
 
 function crossOut(checkbox){
-    if (checkbox.target.tagName = 'input'){
+    if (checkbox.target.tagName === 'INPUT'){
         checkbox.target.nextElementSibling.classList.toggle('line-through')
     }
+    
 }
