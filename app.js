@@ -15,24 +15,25 @@ window.onload = retrieve();
 function retrieve(){
     if (localStorage.length){
         let taskList = JSON.parse(localStorage.getItem('tasks'));
+        tasklist = taskList.filter(element => element.length > 0);
         taskList.forEach(element => {
             let box = document.createElement('div');
             box.classList.add('list-box');
-            let check = document.createElement('input');
-            check.setAttribute('type', 'checkbox');
+            let check = document.createElement('i');
+
+            check.className = 'fas fa-check-square'
             check.id = 'check';
             let li = document.createElement('input');
             li.value = element;
             li.id = 'todo';
-            let img = document.createElement('img');
-            img.classList.add('image');
+            let img = document.createElement('i');
+            img.className ="fas fa-trash-alt";
             img.id = 'remove';
             img.dataset.id = element;
             box.appendChild(check);
             box.appendChild(li);
             listContainer.appendChild(box);
-            img.src ="https://img.icons8.com/plasticine/100/000000/filled-trash.png";
-            box.appendChild(img);  
+            box.appendChild(img);
         })
     }
     input.value = ''
@@ -42,21 +43,22 @@ function addTask(){
     if (input.value !== ''){  
         let box = document.createElement('div');
         box.classList.add('list-box');
-        let check = document.createElement('input');
+        let check = document.createElement('i');
 
-        check.setAttribute('type', 'checkbox');
+        check.className = 'fas fa-check-square'
         check.id = 'check';
         let li = document.createElement('input');
+
         li.id = 'todo';
         li.value = input.value;
-        let img = document.createElement('img');
+        let img = document.createElement('i');
+        img.className ="fas fa-trash-alt";
         img.id = 'remove';
         img.dataset.id = input.value;
-        img.classList.add('image');
         box.appendChild(check);
         box.appendChild(li);
         listContainer.appendChild(box);
-        img.src= "https://img.icons8.com/plasticine/100/000000/filled-trash.png";
+        img.src= "trash.svg";
         box.appendChild(img);  
         if (localStorage.hasOwnProperty('tasks')){
             let taskList = JSON.parse(localStorage.getItem('tasks'));
@@ -83,6 +85,7 @@ function deleteTask(trash){
 function crossOut(checkbox){
     if(checkbox.target.id === 'check')
     checkbox.target.nextElementSibling.classList.toggle('line-through')
+    checkbox.target.classList.toggle('i-active')
 }
 
 document.addEventListener('click', ()=>{
@@ -91,7 +94,7 @@ document.addEventListener('click', ()=>{
             let taskList = JSON.parse(localStorage.getItem('tasks'));
             taskList[index] = element.value;
             element.nextElementSibling.dataset.id = element.value;
-            localStorage.setItem('tasks', JSON.stringify(taskList))
+            localStorage.setItem('tasks', JSON.stringify(taskList));
         })
     })
 })

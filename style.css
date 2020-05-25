@@ -35,13 +35,14 @@ h1{
 }
 input[type=text]{
     width: 400px;
-    height: 40px;
+    min-height: 40px;
     border: none;
     padding-left: 20px;
     background-color: rgb(66, 104, 104);
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
     margin-bottom: 40px;
+    
 }
 button{
     width: 40px;
@@ -63,49 +64,66 @@ button:hover{
     flex-direction: column-reverse;
 }
 
-img{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-.image{
+
+.fa-trash-alt{
     position: absolute;
+    cursor: pointer;
     right: 0px;
     width: 40px;
-    height: 40px;
-    border-left: white solid 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    font-size: 1.2rem;
+    color: rgba(214, 32, 32, 0.795);
+    text-align: center;
+    padding: 10px 0;
     z-index: 1;
 }
 .list-box{
     max-width: 440px;
     width: 100%;
     margin: 10px 0;
-    border: white 2px solid;
+    border-bottom: white 1.5px solid;
     display: flex;
     align-items: center;
     position: relative;
 }
 .list-box>input{
     list-style: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     margin: 10px 0;
     width: max-content;
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: transparent;
     border: none;
 }
-input[type=checkbox]{
-    width: 25px;
-    margin: 0 15px;
-    color: black;
-    font-size: 1.5rem;
+.fa-check-square{
+    cursor: pointer;
+    margin: 0 20px 0 10px;
+    color: rgba(0, 0, 0, 0.068);
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+.fa-check-square:hover{
+    color: rgba(0, 0, 0, 0.24);
+}
+.i-active{
+    color: rgb(245, 245, 245);
+}
+.i-active:hover{
+    color: rgb(255, 255, 255);
+}
+textarea{
+    border: none;
+    background-color: transparent;
+    height: max-content;
+    padding: 5px 0;
+    font-size: 1.2rem;
+    width: 150px;
+    color: white;
+    resize: none;
 }
 .line-through{
-    text-decoration: line-through white;
+    text-decoration: 2px  line-through white;
 }
 @media screen and (max-width: 500px){
     h1{
@@ -129,5 +147,8 @@ input[type=checkbox]{
     }
     button:hover{
         background-color: #fc766a;
+    }
+    textarea{
+        width: 150px;
     }
 }
